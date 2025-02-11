@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url("2.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+  .signin-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  .signin-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .option-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    color: #e7dfca;
+  }
+  .option-group input {
+    margin: 0 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+    margin-right: 25px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 15px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #cea432;
+    border-radius: 4px;
+  }
+  .signin-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #c7a034;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+  }
+  .signin-btn:hover {
+    background-color: #4a6079;
+  }

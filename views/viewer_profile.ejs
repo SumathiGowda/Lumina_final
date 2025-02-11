@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lumina - A Social Media Page for Writers"
+    />
+    <title>Lumina - Social Media</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Nunito", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: #131313;
+      }
+
+      /* Header Styles */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 1rem;
+      }
+
+      /* Header Button Styles */
+      .lumina-button,
+      .button.members,
+      .home {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .lumina-button:hover,
+      .button.members:hover,
+      .home:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Profile Section */
+      .profile {
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        align-items: flex-start;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #d3c7a6;
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-details {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .profile-details h2 {
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        color: white;
+        margin: 0;
+        margin-bottom: 5px;
+      }
+
+      .profile-details p {
+        margin: 5px 0;
+        color: white;
+      }
+
+      /* New Post Section */
+      .new-post {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .new-post textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+        margin-bottom: 15px;
+      }
+
+      .post-button {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .post-button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+        border: #fff;
+      }
+
+      /* Filter Section */
+      .filter-button-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .dropdown {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .dropdown label {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .dropdown input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .filter-button-container button {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .filter-button-container button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Posts Section */
+      .posts {
+        margin-top: 30px;
+      }
+
+      .post {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .post-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .post-author img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .post-author span {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .post-header span {
+        font-size: 14px;
+        color: #888;
+      }
+
+      .post-content {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .post-actions {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .post-actions .post-button {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: "Times New Roman", Times, serif;
+        text-decoration: none;
+      }
+
+      .post-actions .post-button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Emoji Section Styles */
+      .emoji-section {
+        display: none;
+        margin-top: 10px;
+        font-size: 2rem; /* Adjust the font size of the entire emoji section */
+      }
+
+      .emoji-option {
+        cursor: pointer;
+        padding: 10px;
+        margin: 5px;
+        font-size: 1.5rem; /* Smaller emoji size */
+      }
+
+      .emoji-option:hover {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+      }
+
+      /* Footer Styles */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        margin-top: 20px;
+      }
+
+      footer a {
+        color: #0073b1;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .profile {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .profile-pic {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .profile-details {
+          text-align: center;
+        }
+
+        .posts .post {
+          padding: 15px;
+        }
+
+        .dropdown {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .filter-button-container button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="/AboutLumina">
+        <button class="lumina-button">About Lumina</button>
+      </a>
+      <div class="buttons">
+        <button class="button members">Members</button>
+        <a href="/">
+          <button class="home">Home</button>
+        </a>
+      </div>
+    </header>
+  
+    <div class="container">
+      <!-- Profile Section -->
+      <div class="profile">
+        <div class="profile-pic">
+          <!-- Display Profile Image -->
+          <img id="profilePic"
+              src="<%= user.profile_img ? user.profile_img : 'defaultProfile.jpg' %>"
+              alt="Profile Picture" />
+      </div>
+        <div class="profile-details">
+          <h2><%= user.name %></h2>
+          <p>@<%= user.username %></p>
+          <p><%= user.bio %></p>
+          <p id="gender">Gender: <%= user.gender %></p>
+          <p id="dob">
+            Date of Birth: <%= new Date(user.dob).toLocaleDateString('en-GB', {
+                 day: '2-digit',
+                 month: '2-digit',
+                 year: 'numeric'
+            }) %>
+          </p>
+          
+
+        </div>
+      </div>
+  
+      <!-- Posts Section -->
+      <div class="posts">
+        <% if (posts && posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+        <div class="post">
+          <div class="post-header">
+            <div class="post-author">
+              <img src="<%= user.profile_img ? user.profile_img : 'defaultProfile.jpg' %>"/>
+              
+              <span><%= user.username || 'Unknown User' %></span>
+            </div>
+            <!--<span><%= new Date(post.createdAt).toLocaleString() %></span>-->
+          </div>
+          <div class="post-content">
+            <p><%= post.content %></p>
+            <% if (post.image_path) { %>
+            <img src="<%= post.image_path %>" alt="Post Image" class="post-image" />
+            <% } %>
+            <% if (post.video_path) { %>
+            <video controls class="post-video">
+              <source src="<%= post.video_path %>" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <% } %>
+          </div>
+          <div class="post-actions">
+            <button class="post-button likeButton">Like</button>
+          </div>
+          <!-- Emoji Section (Initially Hidden) -->
+          <div class="emoji-section emojiSection">
+            <span class="emoji-option">👍</span>
+            <span class="emoji-option">👏</span>
+            <span class="emoji-option">❤️</span>
+            <span class="emoji-option">🤩</span>
+            <span class="emoji-option">💡</span>
+          </div>
+        </div>
+        <% }); %>
+        <% } else { %>
+        <p>No posts available.</p>
+        <% } %>
+      </div>
+  
+      <!-- Footer -->
+      <footer>
+        <p>Contact Us: <a>lumina.jssateb@gmail.com</a></p>
+        <p>
+          Follow us:
+          <a href="https://www.instagram.com/lumina_jssateb/?igsh=MTQ5ejJqajc2bG8yMg%3D%3D&utm_source=qr#" >Instagram</a>
+        </p>
+      </footer>
+    </div>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch logged-in user details from the server
+        fetch("/getUser")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const fullName = data.name || "No Name Available";
+            const username = data.username ? "@" + data.username : "@lumina_writer";
+  
+            // Update profile section
+            document.getElementById("fullName").textContent = fullName;
+            document.getElementById("username").textContent = username;
+          })
+          .catch((error) => {
+            console.error("Error fetching user data:", error);
+            document.getElementById("fullName").textContent = "User not logged in";
+            document.getElementById("username").textContent = "@lumina_writer";
+          });
+  
+        // Fetch posts from the server
+        fetch("/getposts")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((posts) => {
+            const postsContainer = document.querySelector(".posts"); // Use the class selector
+            postsContainer.innerHTML = ""; // Clear previous content
+  
+            if (posts && posts.length > 0) {
+              posts.forEach((post) => {
+                const postElement = document.createElement("div");
+                postElement.classList.add("post");
+  
+                postElement.innerHTML = `
+                  <div class="post-header">
+                    <div class="post-author">
+                      <img src="${post.authorProfilePic || 'defaultProfile.jpg'}" alt="Profile Picture">
+                      <span>${post.authorName || 'Unknown User'}</span>
+                    </div>
+                    <span>${new Date(post.createdAt).toLocaleString()}</span>
+                  </div>
+                  <div class="post-content">
+                    <p>${post.content}</p>
+                    ${post.image_path ? `<img src="${post.image_path}" alt="Post Image" class="post-image"/>` : ''}
+                    ${post.video_path ?
+                      `<video controls class="post-video">
+                        <source src="${post.video_path}" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>` : ''}
+                  </div>
+                  <div class="post-actions">
+                    <button class="post-button likeButton">Like</button>
+                  </div>
+                  <div class="emoji-section emojiSection">
+                    <span class="emoji-option">👍</span>
+                    <span class="emoji-option">👏</span>
+                    <span class="emoji-option">❤️</span>
+                    <span class="emoji-option">🤩</span>
+                    <span class="emoji-option">💡</span>
+                  </div>
+                `;
+  
+                postsContainer.appendChild(postElement);
+              });
+            } else {
+              postsContainer.innerHTML = "<p>No posts available.</p>";
+            }
+          })
+          .catch((error) => console.error("Error fetching posts:", error));
+  
+        // Like button and emoji section functionality
+        const likeButton = document.querySelector(".likeButton"); // Use class selector to avoid ID duplication
+        const emojiSection = document.querySelector(".emojiSection"); // Use class selector to avoid ID duplication
+  
+        if (likeButton && emojiSection) {
+          likeButton.addEventListener("click", () => {
+            emojiSection.style.display = emojiSection.style.display === "block" ? "none" : "block";
+          });
+  
+          // Handle emoji selection
+          const emojiOptions = document.querySelectorAll(".emoji-option");
+          emojiOptions.forEach((emoji) => {
+            emoji.addEventListener("click", () => {
+              alert(`You selected: ${emoji.innerText}`);
+              emojiSection.style.display = "none"; // Hide emoji section after selection
+            });
+          });
+        }
+      });
+  
+      function signIn(event) {
+        event.preventDefault(); // Prevent default form submission
+  
+        const userId = document.getElementById("userId").value;
+        const password = document.getElementById("password").value;
+        const role = document.querySelector("input[name='role']:checked");
+  
+        if (!role) {
+          alert("Please select a role before signing in.");
+          return;
+        }
+  
+        fetch("/SignIn", {
+          // Changed from '/signin' to '/login'
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, password, role: role.value }),
+        })
+          .then((response) => response.text()) // Using text() to handle string responses from the server
+          .then((data) => {
+            if (data === "Login successful!") {
+              // Redirect based on role
+              if (role.value === "admin") {
+                window.location.href = "/admin1";
+              } else if (role.value === "user") {
+                window.location.href = "/pfp";
+              }
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+  
+</html>
+
+
+
+
+
+
+
+
+
+
+

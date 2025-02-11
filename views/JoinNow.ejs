@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create New Post - Lumina" />
+    <title>New Post - Lumina</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Nunito", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: #131313;
+      }
+
+      /* Header Styles */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 1rem;
+      }
+
+      .lumina-button,
+      .button.members,
+      .home {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .lumina-button:hover,
+      .button.members:hover,
+      .home:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Container */
+      .container {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* New Post Section */
+      .new-post {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .new-post textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+        margin-bottom: 15px;
+        min-height: 200px;
+      }
+
+      /* Button Styles */
+      .button-container button {
+        padding: 0.5rem 1rem; /* Default button size */
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 5px;
+        /* background: linear-gradient(45deg, #6a666e, #999251);*/
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: none;
+        transition: background 0.3s ease;
+        display: inline-block;
+      }
+
+      .button-container button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      .button-container button.active {
+        background-color: #d8ac5b;
+      }
+
+      .button-container button:focus {
+        outline: none;
+      }
+
+      /* Media Upload Section */
+      .media-upload {
+        margin-bottom: 20px;
+      }
+
+      input[type="file"] {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .post-button {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .post-button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+        border: #fff;
+      }
+
+      /* Footer Styles */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        margin-top: 20px;
+      }
+
+      footer a {
+        color: #0073b1;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .new-post {
+          padding: 15px;
+        }
+      }
+
+      /* Add Image and Add Video Buttons */
+      .add-image-button,
+      .add-video-button {
+        padding: 0.7rem 1.2rem; /* Adjusted smaller size */
+        font-size: 16px; /* Smaller font */
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 10px 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: none;
+        transition: background 0.3s ease;
+        display: inline-block;
+      }
+      /* Font Size Dropdown */
+      #fontSizeSelector {
+        padding: 0.5rem;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 2px;
+        background: rgba(56, 54, 54, 0.8);
+        color: rgb(0, 0, 0);
+        border: none;
+        transition: background 0.3s ease;
+      }
+
+      #fontSizeSelector:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      #fontSizeSelector:focus {
+        outline: none;
+      }
+
+      .add-image-button:hover,
+      .add-video-button:hover {
+        background: linear-gradient(45deg, #6a666e, #999251);
+      }
+
+      /* Styles for buttons when active */
+      .add-image-button.active,
+      .add-video-button.active {
+        background-color: #d8ac5b;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="AboutLumina.html">
+        <button class="lumina-button">About Lumina</button>
+      </a>
+      <div class="buttons">
+        <button class="button members">Members</button>
+        <a href="#">
+          <button class="home">Home</button>
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- New Post Section -->
+      <div class="new-post">
+        <h3>Create a New Post</h3>
+
+        <!-- Text Formatting Buttons -->
+        <div class="button-container">
+          <button onclick="toggleActive(this);" id="bold">B</button>
+          <button onclick="toggleActive(this);" id="italic">I</button>
+          <button onclick="toggleActive(this);" id="underline">U</button>
+          <button onclick="toggleActive(this);" id="orderedList">OL</button>
+          <button onclick="toggleActive(this);" id="unorderedList">UL</button>
+          <button onclick="toggleActive(this);" id="leftAlign">←</button>
+          <button onclick="toggleActive(this);" id="centerAlign">☰</button>
+          <button onclick="toggleActive(this);" id="rightAlign">→</button>
+          <input
+            type="color"
+            class="color-picker"
+            id="colorPicker"
+            onchange="changeColor(this)"
+          />
+          <select id="fontSizeSelector" onchange="changeFontSize(this)">
+            <option value="12px">Small</option>
+            <option value="16px">Medium</option>
+            <option value="20px">Large</option>
+            <option value="24px">Extra Large</option>
+          </select>
+        </div>
+
+        <!-- Text Area for Post Content -->
+        <div
+          contenteditable="true"
+          id="postContent"
+          placeholder="Write your post here..."
+          style="border: 1px solid #ccc; padding: 10px; min-height: 200px"
+        ></div>
+
+        <!-- Media Upload Section -->
+        <div class="media-upload">
+          <button
+            class="add-image-button"
+            id="imageButton"
+            onclick="selectImage()"
+          >
+            📷 Add Image
+          </button>
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            style="display: none"
+            onchange="previewImage(event)"
+          />
+
+          <button
+            class="add-video-button"
+            id="videoButton"
+            onclick="selectVideo()"
+          >
+            🎥 Add Video
+          </button>
+          <input
+            type="file"
+            id="videoInput"
+            accept="video/*"
+            style="display: none"
+            onchange="previewVideo(event)"
+          />
+        </div>
+
+        <br />
+        <button class="post-button" onclick="submitPost()">Submit Post</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        Contact Us:
+        <a href="mailto:lumina.jssateb@gmail.com">lumina.jssateb@gmail.com</a>
+      </p>
+      <p>
+        Follow us:
+        <a
+          href="https://www.instagram.com/lumina_jssateb/?igsh=MTQ5ejJqajc2bG8yMg%3D%3D&utm_source=qr#"
+          >Instagram</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      // Function to toggle active class
+      function toggleActive(button) {
+        const contentEditable = document.getElementById("postContent");
+        button.classList.toggle("active");
+
+        switch (button.id) {
+          case "bold":
+            document.execCommand("bold");
+            break;
+          case "italic":
+            document.execCommand("italic");
+            break;
+          case "underline":
+            document.execCommand("underline");
+            break;
+
+          case "orderedList":
+            document.execCommand("insertOrderedList");
+            break;
+          case "unorderedList":
+            document.execCommand("insertUnorderedList");
+            break;
+          case "leftAlign":
+            contentEditable.style.textAlign = "left";
+            break;
+          case "centerAlign":
+            contentEditable.style.textAlign = "center";
+            break;
+          case "rightAlign":
+            contentEditable.style.textAlign = "right";
+            break;
+          default:
+            break;
+        }
+      }
+
+      // Change text color
+      function changeColor(colorInput) {
+        const color = colorInput.value;
+        document.execCommand("foreColor", false, color);
+      }
+
+      // Select image input
+      function selectImage() {
+        document.getElementById("imageInput").click();
+      }
+
+      // Select video input
+      function selectVideo() {
+        document.getElementById("videoInput").click();
+      }
+
+      // Preview selected image
+      function previewImage(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imgElement = document.createElement("img");
+          imgElement.src = e.target.result;
+          imgElement.style.maxWidth = "100%";
+          imgElement.style.marginTop = "10px";
+          document.getElementById("postContent").appendChild(imgElement);
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Preview selected video
+      function previewVideo(event) {
+        const file = event.target.files[0];
+        const videoElement = document.createElement("video");
+        videoElement.src = URL.createObjectURL(file);
+        videoElement.controls = true;
+        videoElement.style.maxWidth = "100%";
+        videoElement.style.marginTop = "10px";
+        document.getElementById("postContent").appendChild(videoElement);
+      }
+      function changeFontSize(selectElement) {
+        const fontSize = selectElement.value;
+        if (fontSize) {
+          document.execCommand("fontSize", false, "7"); // Temporary size
+          const elements = document.querySelectorAll("font[size='7']");
+          elements.forEach((element) => {
+            element.removeAttribute("size");
+            element.style.fontSize = fontSize;
+          });
+        }
+      }
+
+      // Function to submit the post
+      function submitPost() {
+        const postContent = document.getElementById("postContent").innerHTML;
+
+        if (!postContent.trim()) {
+          alert("Please write something before submitting.");
+          return;
+        }
+
+        // Simulate saving the post (you can modify this to send it to a backend)
+        console.log("New Post Submitted: " + postContent);
+
+        // Redirect to another page (e.g., posts feed) after submitting the post
+        window.location.href = "pfp.html"; // Change this to your preferred destination
+      }
+    </script>
+  </body>
+</html>

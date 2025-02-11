@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/SignIn.css">
+  </head>
+  <body>
+    <div class="signin-container">
+      <h2
+        style="
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: #d8ac5b;
+        "
+      >
+        Sign In
+      </h2>
+
+      <div class="option-group">
+        <label><input type="radio" name="role" value="admin" /> Admin</label>
+        <label><input type="radio" name="role" value="user" /> User</label>
+        
+      </div>
+
+      <form id="signin-form" onsubmit="signIn(event)">
+
+        <div class="form-group">
+          <label for="userId">User ID:</label>
+          <input type="text" id="userId" name="userId" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="signin-btn">Sign In</button>
+        <div class="form-footer">
+          <p style="color: #ffffff">
+            New User?
+            <a style="color: #c7a034" href="/signup"
+              >Click here to Sign Up</a>
+          </p>
+          <p style="color: #ffffff">
+            Forgot Password?
+            <a style="color: #c7a034" href="/ForgotPassword">Reset here</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    function signIn(event) {
+      event.preventDefault(); // Prevent default form submission
+    
+      const userId = document.getElementById("userId").value;
+      const password = document.getElementById("password").value;
+      const role = document.querySelector("input[name='role']:checked");
+    
+      if (!role) {
+        alert("Please select a role before signing in.");
+        return;
+      }
+
+     
+      
+      fetch("/SignIn", {  // Changed from '/signin' to '/login'
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, password, role: role.value })
+      })
+      .then(response => response.text())  // Using text() to handle string responses from the server
+      .then(data => {
+        if (data === "Login successful!") {
+          // Redirect based on role
+          if (role.value === "admin") {
+            window.location.href = "/admin1";
+          } else if (role.value === "user") {
+            window.location.href = "/pfp";
+          }
+        } 
+      })
+      .catch(error => console.error("Error:", error));
+    }
+    
+  </script>
+  
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lumina - A Social Media Page for Writers" />
+    <title>Lumina - Social Media</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@700&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Nunito", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #6a666e, #999251);
+            color: #131313;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 1rem;
+        }
+
+        /* Header Button Styles */
+        .lumina-button,
+        .button.members,
+        .home {
+            background: linear-gradient(45deg, #6a666e, #999251);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .lumina-button:hover,
+        .button.members:hover,
+        .home:hover {
+            background: linear-gradient(45deg, #999251, #6a666e);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Profile Section */
+        .profile {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #d3c7a6;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .profile-details h2 {
+            font-family: "Roboto", sans-serif;
+            font-size: 24px;
+            color: white;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .profile-details p {
+            margin: 5px 0;
+            color: white;
+        }
+
+        /* New Post Section */
+        .new-post {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .new-post textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 14px;
+            resize: none;
+            margin-bottom: 15px;
+        }
+
+        .post-button {
+            background: linear-gradient(45deg, #6a666e, #999251);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .post-button:hover {
+            background: linear-gradient(45deg, #999251, #6a666e);
+            border: #fff;
+        }
+
+        /* Filter Section */
+        .filter-button-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .dropdown {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .dropdown label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .dropdown input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-button-container button {
+            background: linear-gradient(45deg, #6a666e, #999251);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .filter-button-container button:hover {
+            background: linear-gradient(45deg, #999251, #6a666e);
+        }
+
+        /* Posts Section */
+        .posts {
+            margin-top: 30px;
+        }
+
+        .post {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .post-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .post-author span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .post-header span {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .post-content {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .post-actions .post-button {
+            background: linear-gradient(45deg, #6a666e, #999251);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: "Times New Roman", Times, serif;
+            text-decoration: none;
+        }
+
+        .post-actions .post-button:hover {
+            background: linear-gradient(45deg, #999251, #6a666e);
+        }
+
+        /* Emoji Section Styles */
+        .emoji-section {
+            display: none;
+            margin-top: 10px;
+            font-size: 2rem;
+            /* Adjust the font size of the entire emoji section */
+        }
+
+        .emoji-option {
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.5rem;
+            /* Smaller emoji size */
+        }
+
+        .emoji-option:hover {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #0073b1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-pic {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .profile-details {
+                text-align: center;
+            }
+
+            .posts .post {
+                padding: 15px;
+            }
+
+            .dropdown {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .filter-button-container button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="/AboutLumina">
+            <button class="lumina-button">About Lumina</button>
+        </a>
+        <div class="buttons">
+            <button class="button members">Members</button>
+            <a href="/home">
+                <button class="home">Home</button>
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <div class="profile-pic">
+                <!-- Display Profile Image -->
+                <img id="profilePic"
+                    src="<%= user.profile_img ? user.profile_img : 'defaultProfile.jpg' %>"
+                    alt="Profile Picture" />
+            </div>
+            <div class="profile-details">
+                <h2 id="fullName"></h2>
+                <p id="username"></p>
+                <p id="bio">Writer | Speaker | Creative Thinker</p>
+                <p id="gender">Gender: </p>
+                <p id="dob">Date of Birth: </p>
+
+                <div class="profile-actions">
+                    <a href="/NewPost">
+                        <button class="post-button">New Post</button>
+                    </a>
+                    <a href="/editpfp?username=<%= user.username %>">
+                        <button class="post-button">Edit Profile</button>
+                    </a>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Posts Section -->
+        <!-- Posts Section -->
+        <div class="posts">
+            <% if (posts.length> 0) { %>
+                <% posts.forEach(post=> { %>
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="post-author">
+                                <img id="profilePic"
+                    src="<%= user.profile_img ? user.profile_img : 'defaultProfile.jpg' %>"
+                    alt="Profile Picture" />
+                                <span><%= post.name ? post.name : 'Unknown User' %></span>
+
+                            </div>
+                            <span><%= new Date(post.created_at).toLocaleString() %></span>
+                        </div>
+                        <div class="post-content">
+                            <p>
+                                <%= post.content %>
+                            </p>
+                            <% if (post.image_path) { %>
+                                <img src="<%= post.image_path %>" alt="Post Image" class="post-image" />
+                                <% } %>
+                                    <% if (post.video_path) { %>
+                                        <video controls class="post-video">
+                                            <source src="<%= post.video_path %>" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <% } %>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-button likeButton">Like</button>
+                        </div>
+                        <!-- Emoji Section (Initially Hidden) -->
+                        <div class="emoji-section emojiSection">
+                            <span class="emoji-option">👍</span>
+                            <span class="emoji-option">👏</span>
+                            <span class="emoji-option">❤️</span>
+                            <span class="emoji-option">🤩</span>
+                            <span class="emoji-option">💡</span>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No posts available.</p>
+                            <% } %>
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <p>Contact Us: <a>lumina.jssateb@gmail.com</a></p>
+            <p>
+                Follow us:
+                <a
+                    href="https://www.instagram.com/lumina_jssateb/?igsh=MTQ5ejJqajc2bG8yMg%3D%3D&utm_source=qr#">Instagram</a>
+            </p>
+        </footer>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Fetch logged-in user details from the server
+                fetch("/getUser")
+                    .then(response => response.json())
+                    .then(data => {
+                        const profilePic = data.profile_img || "defaultPRofile.jpg";
+                        const fullName = data.name || "No Name Available";
+                        const username = data.username ? "@" + data.username : "@lumina_writer";
+                        const bio = data.bio || "Writer | Speaker | Creative Thinker"; // Get bio from the response
+                        const gender = data.gender || "Not specified"; // Get gender from the response
+                        let dob = data.dob || "Not specified"; // Get dob from the response
+
+                        // Format the date of birth (MM/DD/YYYY)
+                        if (dob !== "Not specified") {
+                            const dobDate = new Date(dob);
+                            const month = String(dobDate.getMonth() + 1).padStart(2, '0');
+                            const day = String(dobDate.getDate()).padStart(2, '0');
+                            const year = dobDate.getFullYear();
+                            dob = `${day}/${month}/${year}`;
+                        }
+
+                        // Update profile section
+                        document.getElementById("fullName").textContent = fullName;
+                        document.getElementById("username").textContent = username;
+                        document.getElementById("bio").textContent = bio; // Update bio element
+                        document.getElementById("gender").textContent = `Gender: ${gender}`; // Update gender element
+                        document.getElementById("dob").textContent = `Date of Birth: ${dob}`; // Update dob element
+                         document.getElementById("profilePic").src = profilePic; // Update profile image source
+                    })
+                    .catch(error => {
+                        console.error("Error fetching user data:", error);
+                        document.getElementById("fullName").textContent = "User not logged in";
+                        document.getElementById("username").textContent = "@lumina_writer";
+                        document.getElementById("bio").textContent = "Writer | Speaker | Creative Thinker"; // Set a default bio if there is error
+                        document.getElementById("gender").textContent = "Gender: Not specified"; // Set a default gender
+                        document.getElementById("dob").textContent = "Date of Birth: Not specified"; // Set a default dob
+                    });
+
+                // Retrieve profile data from localStorage if available
+                const profilePic = localStorage.getItem("profilePic");
+                const fullNameLS = localStorage.getItem("fullName");
+                const usernameLS = localStorage.getItem("username");
+                const bioLS = localStorage.getItem("bio");
+                const genderLS = localStorage.getItem("gender");
+                const dobLS = localStorage.getItem("dob");
+
+
+                if (profilePic) {
+                    document.getElementById("profilePic").src = profilePic;
+                }
+                if (fullNameLS) {
+                    document.getElementById("fullName").textContent = fullNameLS;
+                }
+                if (usernameLS) {
+                    document.getElementById("username").textContent = usernameLS;
+                }
+                if (bioLS) {
+                    document.getElementById("bio").textContent = bioLS;
+                }
+                if (genderLS) {
+                    document.getElementById("gender").textContent = `Gender: ${genderLS}`;
+                }
+                if (dobLS) {
+                    document.getElementById("dob").textContent = `Date of Birth: ${dobLS}`;
+                }
+            });
+        </script>
+</body>
+
+</html>

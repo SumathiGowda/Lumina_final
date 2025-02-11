@@ -1,0 +1,194 @@
+/* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Header Styling */
+header {
+  background-color: #2d3e50;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lumina-button {
+  background-color: #1d2c3f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.lumina-button:hover {
+  background-color: #405a6b;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  background-color: #1d2c3f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #405a6b;
+}
+
+/* Background and Container */
+.background {
+  background-color: #ffffff;
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #2d3e50;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1rem;
+  color: #777;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+/* Membership Form Styling */
+.membership-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #2d3e50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Adjust the checkbox layout to stack vertically */
+.checkbox-group {
+  margin-bottom: 20px;
+}
+
+.checkbox-group label {
+  font-size: 1rem;
+  color: #555;
+  display: block; /* Makes sure the label and checkbox stack vertically */
+  margin-bottom: 10px; /* Adds space between checkboxes */
+}
+
+textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+.submit-button {
+  background-color: #2d3e50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #405a6b;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #2d3e50;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}

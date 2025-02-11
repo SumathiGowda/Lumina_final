@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumina - Home</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Nunito", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: #131313;
+      }
+
+      /* Header Styles */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 1rem;
+      }
+
+      /* Header Button Styles */
+      .lumina-button,
+      .button.members,
+      .home {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .lumina-button:hover,
+      .button.members:hover,
+      .home:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Profile Section */
+      .profile {
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        align-items: flex-start;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #d3c7a6;
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-details {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .profile-details h2 {
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        color: white;
+        margin: 0;
+        margin-bottom: 5px;
+      }
+
+      .profile-details p {
+        margin: 5px 0;
+        color: white;
+      }
+
+      /* New Post Section */
+      .new-post {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .new-post textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+        margin-bottom: 15px;
+      }
+
+      .post-button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+        border: #fff;
+      }
+
+      /* Filter Section */
+      .filter-button-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .dropdown {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .dropdown label {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .dropdown input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .filter-button-container button {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .filter-button-container button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Posts Section */
+      .posts {
+        margin-top: 30px;
+      }
+
+      .post {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .post-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .post-author img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .post-author span {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .post-header span {
+        font-size: 14px;
+        color: #888;
+      }
+
+      .post-content {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .post-actions {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .post-actions .post-button {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: "Times New Roman", Times, serif;
+        text-decoration: none;
+      }
+
+      .post-actions .post-button:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+      }
+
+      /* Emoji Section Styles */
+      .emoji-section {
+        display: none;
+        margin-top: 10px;
+        font-size: 2rem;
+      }
+
+      .emoji-option {
+        cursor: pointer;
+        padding: 10px;
+        margin: 5px;
+        font-size: 1.5rem;
+      }
+
+      .emoji-option:hover {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+      }
+
+      /* Footer Styles */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        margin-top: 20px;
+      }
+
+      footer a {
+        color: #0073b1;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .profile {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .profile-pic {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .profile-details {
+          text-align: center;
+        }
+
+        .posts .post {
+          padding: 15px;
+        }
+
+        .dropdown {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .filter-button-container button {
+          width: 100%;
+        }
+      }
+
+      .post-actions {
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        padding: 15px 0 0 15px;
+        margin-top: 10px;
+        border-top: 1px solid #eee;
+      }
+
+      .post-button {
+        min-width: 80px;
+        padding: 0.5rem 1.5rem !important;
+        margin-left: 0;
+      }
+
+      .search-container {
+        flex: 1;
+        max-width: 500px;
+        margin: 0 2rem;
+        position: relative;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        padding-left: 40px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-input:focus {
+        outline: none;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6a666e;
+        font-size: 1.2rem;
+      }
+
+      /* Notification Bell Styles */
+      .notification-btn {
+        background: linear-gradient(45deg, #6a666e, #999251);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .notification-btn:hover {
+        background: linear-gradient(45deg, #999251, #6a666e);
+        transform: scale(1.05);
+      }
+
+      .notification-btn::after {
+        content: "3";
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ff4757;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .notification-icon {
+        font-size: 1.2rem;
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+      }
+
+      /* Animation for new notifications */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .has-new-notification {
+        animation: pulse 1s ease infinite;
+      }
+
+      /* Like Button Animation */
+      .post-button.liked {
+        transform: scale(1.1);
+        background: linear-gradient(45deg, #c23b3b, #6a666e) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with Enhanced Search -->
+    <header class="header">
+      <div class="nav-left">
+        <button class="lumina-button" onclick="window.location.href='/SignIn';">Profile</button>
+        <button class="button members">Members</button>
+        <button class="home" onclick="window.location.href='/'">Home</button>
+    </div>
+    
+
+      <!-- Enhanced Search Bar -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for users🔍..."
+          class="search-input"
+        />
+      </div>
+      
+      <div id="searchResults" class="posts"></div>
+
+      <div class="nav-right">
+        <button class="notification-btn" onclick="window.location.href='/noti'">🔔</button>
+      </div>
+    </header>
+
+    <!-- Main Feed -->
+    <div class="posts">
+      <% if (posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+          <div class="post">
+            <div class="post-header">
+              <div class="post-author">
+                <img id="postProfilePic" src="defaultProfile.jpg" alt="Author Picture" />
+                <!-- Make username clickable by wrapping it in an <a> tag -->
+                <a href="/viewer_profile/<%= post.username %>">
+                  <span><%= post.username ? post.username : 'Unknown User' %></span>
+                </a>
+              </div>
+              <span><%= new Date(post.created_at).toLocaleString() %></span>
+            </div>
+            <div class="post-content">
+              <p><%= post.content %></p>
+              <% if (post.image_path) { %>
+                <img src="<%= post.image_path %>" alt="Post Image" class="post-image"/>
+              <% } %>
+              <% if (post.video_path) { %>
+                <video controls class="post-video">
+                  <source src="<%= post.video_path %>" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              <% } %>
+            </div>
+            <div class="post-actions">
+              <button class="post-button likeButton">Like</button>
+            </div>
+            <!-- Emoji Section (Initially Hidden) -->
+            <div class="emoji-section emojiSection">
+              <span class="emoji-option">👍</span>
+              <span class="emoji-option">👏</span>
+              <span class="emoji-option">❤️</span>
+              <span class="emoji-option">🤩</span>
+              <span class="emoji-option">💡</span>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p>No posts available.</p>
+      <% } %>
+    </div>
+    
+
+    <script>
+
+      async function handleSearch() {
+        const searchQuery = document.getElementById("searchInput").value.trim();
+    
+        if (!searchQuery) {
+          alert("Please enter a username to search.");
+          return;
+        }
+    
+        try {
+          // Send the search query to the backend
+          const response = await fetch(`/search-users?username=${encodeURIComponent(searchQuery)}`);
+          const data = await response.json();
+    
+          if (data.error) {
+            alert(data.error);
+            return;
+          }
+    
+          // Display the search results
+          displaySearchResults(data.users);
+        } catch (error) {
+          console.error("Error searching for users:", error);
+          alert("Failed to search for users. Please try again.");
+        }
+      }
+    
+      function displaySearchResults(users) {
+        const searchResultsContainer = document.getElementById("searchResults");
+        searchResultsContainer.innerHTML = ""; // Clear previous results
+    
+        if (users.length === 0) {
+          searchResultsContainer.innerHTML = `<div class="post"><div class="post-content">No users found.</div></div>`;
+          return;
+        }
+    
+        users.forEach(user => {
+          const userElement = document.createElement("div");
+          userElement.className = "post";
+          userElement.innerHTML = `
+            <div class="post-header">
+              <div class="post-author">
+                <img src="${user.profile_img}" alt="${user.name}" />
+                <span>${user.name}</span>
+              </div>
+            </div>
+            <div class="post-content">
+              <p>Username: ${user.username}</p>
+              <p>College: ${user.college}</p>
+            </div>
+          `;
+          searchResultsContainer.appendChild(userElement);
+        });
+      }
+    
+        
+          // Attach the search function to the search input
+          const searchInput = document.querySelector(".search-input");
+          searchInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+              handleSearch();
+            }
+          });
+    
+          let debounceTimeout;
+    searchInput.addEventListener("input", () => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(handleSearch, 300); // Wait 300ms after typing stops
+    });
+
+      
+      // Like Button Animation
+      function handleLike(button) {
+        const currentLikes = parseInt(button.innerText.match(/\d+/)[0]);
+        button.innerHTML = `❤️ ${currentLikes + 1}`;
+        button.classList.add("liked");
+        setTimeout(() => button.classList.remove("liked"), 300);
+      }
+/*
+      // Improved Search UX
+      const searchInput = document.querySelector(".search-input");
+      searchInput.addEventListener("focus", () => {
+        document.querySelector(".search-container").style.transform =
+          "scale(1.02)";
+      });
+      searchInput.addEventListener("blur", () => {
+        document.querySelector(".search-container").style.transform =
+          "scale(1)";
+      });*/
+
+      function displaySearchResults(users) {
+        const postsContainer = document.querySelector(".posts");
+        postsContainer.innerHTML = ""; // Clear existing posts
+      
+        if (users.length === 0) {
+          postsContainer.innerHTML = `<div class="post"><div class="post-content">No users found.</div></div>`;
+          return;
+        }
+      
+        users.forEach(user => {
+          const userElement = document.createElement("div");
+          userElement.className = "post";
+          userElement.innerHTML = `
+            <div class="post-header">
+              <div class="post-author">
+                <img src="default-profile.jpg" alt="${user.name}" />
+                <a href="/viewer_profile/${user.username}" style="text-decoration: none; color: inherit;">
+                  <span>${user.name}</span>
+                </a>
+              </div>
+            </div>
+            <div class="post-content">
+              <p>Username: ${user.username}</p>
+              <p>College: ${user.college}</p>
+            </div>
+          `;
+          postsContainer.appendChild(userElement);
+        });
+      }
+
+      fetch("/home")
+          .then(response => response.json())
+          .then(posts => {
+            const postsContainer = document.getElementById("postsContainer");
+            postsContainer.innerHTML = ""; // Clear previous content
+
+            posts.forEach(post => {
+              const postElement = document.createElement("div");
+              postElement.classList.add("post");
+              postElement.innerHTML = `
+                <div class="post-author">
+                  <img src="${post.authorProfilePic || 'default-profile.png'}" alt="Profile Picture">
+                  <span id="fullName">${post.author}</span>
+                </div>
+                <p>${post.content}</p>
+              `;
+              postsContainer.appendChild(postElement);
+            });
+          })
+          .catch(error => console.error("Error fetching posts:", error));
+
+          
+      
+    </script>
+  </body>
+</html>

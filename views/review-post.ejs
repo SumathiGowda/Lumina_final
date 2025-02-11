@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Post Requests</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background: url("6.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      .container {
+        text-align: center;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Slight transparency for readability */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+        overflow-y: auto;
+        height: 100%;
+        margin-top: 50px;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .post {
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+
+      .post p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .post-buttons {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background: linear-gradient(45deg, #6a666e, #999251);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 120px;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Review Post Requests</h1>
+      <% posts.forEach(post => { %>
+        <% if (post.status === 'pending') { %>
+          <div class="post">
+            <p><strong>Username:</strong> <%= post.username %></p>
+            <p><strong>Content:</strong> <%= post.content %></p>
+        
+            <% if (post.image_path) { %>
+              <img src="<%= post.image_path %>" alt="Post Image" style="max-width: 100%; height: auto;">
+            <% } %>
+        
+            <% if (post.video_path) { %>
+              <video controls style="max-width: 100%; height: auto;">
+                <source src="<%= post.video_path %>" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            <% } %>
+        
+            <p><strong>Created At:</strong> <%= post.created_at %></p>
+            <p><strong>Status:</strong> <%= post.status %></p>
+        
+            <div class="post-buttons">
+              <button onclick="updatePostStatus('<%= post.post_id %>', 'accepted', '<%= post.username %>')">Accept</button>
+              <button onclick="updatePostStatus('<%= post.post_id %>', 'rejected', '<%= post.username %>')">Reject</button>
+            </div>
+          </div>
+        <% } %>
+      <% }); %>
+    </div>
+
+    <script>
+      function updatePostStatus(postId, status, username) {
+        fetch('/update-post-status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ postId, status, username }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message);
+            window.location.reload();
+          })
+          .catch((error) => console.error('Error:', error));
+      }
+    </script>
+  </body>
+</html>

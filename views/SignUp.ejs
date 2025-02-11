@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: url("2.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+      .signup-container {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 30px 20px;
+        border-radius: 8px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+      }
+      .signup-container h2 {
+        margin-bottom: 20px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #d8ac5b;
+        font-size: 36px;
+      }
+      .intro {
+        margin-bottom: 30px;
+        color: #e7dfca;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group select {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #cea432;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #d8a428;
+      }
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .form-submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #c7a034;
+        color: rgb(10, 10, 10);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .form-submit:hover {
+        background-color: #4a6079;
+        color: #ffffff;
+      }
+      .form-footer {
+        margin-top: 20px;
+        color: white;
+      }
+      .form-footer a {
+        color: #c7a034;
+        text-decoration: none;
+      }
+      .form-footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h2>Welcome to Lumina</h2>
+      <p class="intro">
+        Welcome to Lumina, a haven for creativity, brilliance, and literary
+        excellence! By signing up, you're stepping into a community that
+        celebrates the art of words and the power of expression. Together, let’s
+        illuminate minds and kindle the light of brilliance.
+      </p>
+      <form id="signup-form" action="/SignUp" method="post">       
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">User ID:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            required
+            pattern="^[a-z0-9_]{3,16}$"
+            title="Username must be lowercase, no special characters, and between 3-16 characters"
+          />
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <!-- Contact Number -->
+        <div class="form-group">
+          <label for="contact">Contact Number:</label>
+          <input
+            type="tel"
+            id="contact"
+            name="contact"
+            placeholder="Enter your contact number"
+            required
+          />
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirm_password"
+            placeholder="Re-enter your password"
+            required
+          />
+        </div>
+        <!-- Semester -->
+        <div class="form-group">
+          <label for="semester">Semester:</label>
+          <select id="semester" name="semester" required>
+            <option value="" disabled selected>Select your semester</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+            <option value="3">3rd Semester</option>
+            <option value="4">4th Semester</option>
+            <option value="5">5th Semester</option>
+            <option value="6">6th Semester</option>
+            <option value="7">7th Semester</option>
+            <option value="8">8th Semester</option>
+          </select>
+        </div>
+        <!-- College -->
+        <div class="form-group">
+          <label for="college">College:</label>
+          <input
+            type="text"
+            id="college"
+            name="college"
+            placeholder="Enter your college name"
+            required
+          />
+        </div>
+        <!-- Branch -->
+        <div class="form-group">
+          <label for="branch">Branch:</label>
+          <input
+            type="text"
+            id="branch"
+            name="branch"
+            placeholder="Enter your branch (e.g., CSE)"
+            required
+          />
+        </div>
+        <!-- Submit -->
+        <button type="submit" class="form-submit">Submit</button>
+        <!-- Footer -->
+        <div class="form-footer">
+          <p>Already have an account? <a href="/SignIn">Sign In Here</a></p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Handle form submission with JavaScript and redirect after successful registration
+      document.getElementById('signup-form').addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(this);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  fetch('http://localhost:5000/signup', {  // Ensure this matches the POST route in index.js
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message === 'User registered successfully!') {
+      window.location.href = '/pfp'; // Redirect to pfp.ejs
+    } else {
+      alert(data.message); // Display error message if any
+    }
+  })
+  .catch(error => console.error('Error:', error));
+  
+});
+
+    </script>
+  </body>
+</html>
