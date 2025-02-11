@@ -1,0 +1,43 @@
+mysql> desc posts;
++------------+---------------------------------------+------+-----+-------------------+-------------------+
+| Field      | Type                                  | Null | Key | Default           | Extra             |
++------------+---------------------------------------+------+-----+-------------------+-------------------+
+| post_id    | int                                   | NO   | PRI | NULL              | auto_increment    |
+| username   | varchar(50)                           | NO   | MUL | NULL              |                   |
+| content    | longtext                              | YES  |     | NULL              |                   |
+| image_path | varchar(255)                          | YES  |     | NULL              |                   |
+| video_path | varchar(255)                          | YES  |     | NULL              |                   |
+| created_at | timestamp                             | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| status     | enum('pending','accepted','rejected') | YES  |     | pending           |                   |
++------------+---------------------------------------+------+-----+-------------------+-------------------+
+
+mysql> desc signup;
++-------------+--------------+------+-----+-------------------+-------------------+
+| Field       | Type         | Null | Key | Default           | Extra             |
++-------------+--------------+------+-----+-------------------+-------------------+
+| id          | int          | NO   | PRI | NULL              | auto_increment    |
+| name        | varchar(255) | NO   |     | NULL              |                   |
+| username    | varchar(50)  | NO   | UNI | NULL              |                   |
+| email       | varchar(255) | NO   | UNI | NULL              |                   |
+| contact     | varchar(20)  | NO   |     | NULL              |                   |
+| password    | varchar(255) | NO   |     | NULL              |                   |
+| semester    | varchar(20)  | NO   |     | NULL              |                   |
+| college     | varchar(255) | NO   |     | NULL              |                   |
+| branch      | varchar(255) | NO   |     | NULL              |                   |
+| created_at  | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| bio         | text         | YES  |     | NULL              |                   |
+| gender      | varchar(10)  | YES  |     | NULL              |                   |
+| dob         | date         | YES  |     | NULL              |                   |
+| profile_img | varchar(255) | YES  |     | NULL              |                   |
++-------------+--------------+------+-----+-------------------+-------------------+
+
+mysql> desc notifications;
++------------+-------------+------+-----+-------------------+-------------------+
+| Field      | Type        | Null | Key | Default           | Extra             |
++------------+-------------+------+-----+-------------------+-------------------+
+| id         | int         | NO   | PRI | NULL              | auto_increment    |
+| username   | varchar(50) | NO   | MUL | NULL              |                   |
+| message    | text        | NO   |     | NULL              |                   |
+| is_read    | tinyint(1)  | YES  |     | 0                 |                   |
+| created_at | timestamp   | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++------------+-------------+------+-----+-------------------+-------------------+
