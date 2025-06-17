@@ -4,7 +4,7 @@
 
 This was part of a college-level project to get hands-on experience with backend development, working with databases, and implementing real-world features like user roles, authentication, and content moderation.
 
-## 🔧 What I Built
+## 🔧 What we Built
 
 -  User Sign-Up and Sign-In with authentication
 -  Role-based access (Admins vs. regular users)
@@ -21,7 +21,7 @@ This was part of a college-level project to get hands-on experience with backend
 - **Others**: bcrypt for password hashing
 
 
-## What I Learned
+## What we Learned
 
 Working on Lumina gave me practical experience in:
 - Writing REST APIs with Node and Express
